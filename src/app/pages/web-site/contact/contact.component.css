@@ -1,0 +1,5 @@
+.background {
+  background-color: #fe9003;
+  background-image: -webkit-linear-gradient(147deg, #fe9003 50%, #f3ad52 50%);
+  min-height: 89vh;
+}
