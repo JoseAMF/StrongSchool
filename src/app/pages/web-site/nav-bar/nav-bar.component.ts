@@ -29,6 +29,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     const scroll = window.pageYOffset;
     if (scroll > this.currentPosition) {
       this.hideNav = true;
+      this.collapsed = true;
     } else {
       this.hideNav = false;
     }

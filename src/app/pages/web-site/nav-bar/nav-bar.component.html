@@ -2,17 +2,41 @@
 <div *ngIf="!hideNav">
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top background" id="mainNav" >
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/Images/StrongSchool.png"  width="100" height="100" alt="logo"></a><button class="navbar-toggler navbar-toggler-right" (click)="collapsed = !collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <a class="navbar-brand js-scroll-trigger" (click)="Home.scrollIntoView({behavior:'smooth'})"><img src="assets/Images/StrongSchool.png"  width="100" height="100" alt="logo"></a><button class="navbar-toggler navbar-toggler-right" (click)="collapsed = !collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive" [ngClass]="{collapse: collapsed}">
             <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                <li class="nav-item nav-link active" (click)="Home.scrollIntoView({behavior:'smooth'})">Home</li>
-                <li class="nav-item nav-link active" (click)="AboutUs.scrollIntoView({behavior:'smooth'})">About Us</li>
-                <li class="nav-item nav-link active" (click)="Testimonial.scrollIntoView({behavior:'smooth'})">Testimonials</li>
-                <li class="nav-item nav-link active" (click)="Contato.scrollIntoView({behavior:'smooth'})">Contact</li>
-                <li class="nav-item ml-5"><button class="btn btn-primary" style="border-radius: 15px 50px;">Login</button></li>
+                <!-- <li class="nav-item nav-link active" (click)="[Home.scrollIntoView({behavior:'smooth'}), collapsed = true]">Home</li>
+                <li class="nav-item nav-link active" (click)="[AboutUs.scrollIntoView({behavior:'smooth'}), collapsed = true]">About Us</li>
+                <li class="nav-item nav-link active" (click)="[Testimonial.scrollIntoView({behavior:'smooth'}), collapsed = true]">Testimonials</li>
+                <li class="nav-item nav-link active" (click)="[Contato.scrollIntoView({behavior:'smooth'}), collapsed = true]">Contact</li> -->
+                <li>  <button class="spin circle" (click)="[Home.scrollIntoView({behavior:'smooth'}), collapsed = true]">Home</button></li>
+                <li>  <button class="spin circle" (click)="[AboutUs.scrollIntoView({behavior:'smooth'}), collapsed = true]">About Us</button></li>
+                <li>  <button class="spin circle" (click)="[Testimonial.scrollIntoView({behavior:'smooth'}), collapsed = true]">Testimonials</button></li>
+                <li>  <button class="spin circle" (click)="[Contato.scrollIntoView({behavior:'smooth'}), collapsed = true]">Contact</button></li>
+                <li class="nav-item ml-lg-5"><button class="spin circle">Login</button></li>
             </ul>
         </div>
     </div>
 
   </nav>
 </div>
+
+<script>
+  jQuery(document).on('ready', function(){
+    jQuery('.nav-hover-effect .main-menu .nav.menu > li a').each(function(index, el){
+        var elVal = jQuery(el).text();
+        jQuery(el).attr('data-hover', elVal);
+    });
+  jQuery(".nav-hover-effect .main-menu .nav.menu > li a").wrapInner("<span></span>");
+ jQuery('.nav-hover-effect .main-menu .nav.menu > li a').each(function(){
+      let style = getComputedStyle(this),
+          color = style.backgroundColor,
+          borderColor = style.borderTopColor;
+      this.style.setProperty('--button-background-color', color);
+      this.style.setProperty('--button-border-color', borderColor);
+    }).on('mouseenter', function(){
+        let color = getComputedStyle(this).backgroundColor;
+        this.style.setProperty('--button-background-hover', color);
+    });
+});
+</script>
